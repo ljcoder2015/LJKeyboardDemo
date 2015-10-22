@@ -11,8 +11,9 @@
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIButton *button;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *BottomConstraint;
 
 @end
 
@@ -33,9 +34,10 @@
     
     NSInteger Duration = [[noti.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] integerValue];//获取键盘显示动画持续时间
     UIViewAnimationOptions option = ([[noti.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue] << 16);//获取键盘显示动画曲线
-
+    CGFloat bottom = [[noti.userInfo objectForKey: UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
+    self.BottomConstraint.constant = bottom;//frame的改变方法，根据具体情况来写
     [UIView animateWithDuration:Duration delay:0 options:option animations:^{
-        [self.scrollView setContentOffset:CGPointMake(0, 70)];//frame的改变方法，根据具体情况来写
+        [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {}];
 }
 
@@ -43,9 +45,10 @@
     
     NSInteger Duration = [[noti.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] integerValue];//获取键盘隐藏动画持续时间
     UIViewAnimationOptions option = ([[noti.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue] << 16);//获取键盘隐藏动画曲线
+    self.BottomConstraint.constant = 0;//frame的改变方法，根据具体情况来写
     
     [UIView animateWithDuration:Duration  delay:0 options:option animations:^{
-        [self.scrollView setContentOffset:CGPointMake(0, 0)];//frame的改变方法，根据具体情况来写
+        [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {}];
 }
 
