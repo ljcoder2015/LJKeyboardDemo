@@ -39,6 +39,8 @@
     [UIView animateWithDuration:Duration delay:0 options:option animations:^{
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {}];
+    
+    [self.button setTitle:@"收键盘" forState:UIControlStateNormal];
 }
 
 - (void)keyboardWillHide:(NSNotification *)noti {
@@ -50,6 +52,8 @@
     [UIView animateWithDuration:Duration  delay:0 options:option animations:^{
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {}];
+    
+    [self.button setTitle:@"出键盘" forState:UIControlStateNormal];
 }
 
 - (IBAction)hideKeyboard:(id)sender {
@@ -64,6 +68,10 @@
         [self.textField becomeFirstResponder];
     }
     
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.textField resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
