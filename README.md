@@ -1,3 +1,3 @@
 # LJKeyboardDemo
-iOS-完美处理键盘事件，博客地址：http://www.ljcoder.com/?p=18&amp;preview=true#first
+iOS-处理键盘事件，在开发过程中，我们基本上都要进行键盘事件的处理，在键盘弹出的时候为了避免输入框被挡住，我们需要把整个view向上移动一定距离，键盘隐藏的时候又恢复到原来的位置。今天给大家分享的方法适合处理像微信那样输入框跟随键盘无缝同步上移。博客地址：http://www.ljcoder.com/?p=18&amp;preview=true#first
 
